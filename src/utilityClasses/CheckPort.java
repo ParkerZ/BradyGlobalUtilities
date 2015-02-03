@@ -12,7 +12,7 @@ import java.net.Socket;
  */
 public class CheckPort {
 
-	public boolean checkPort(String host, int port, boolean printStatus) {
+	public static boolean checkPort(String host, int port, boolean printStatus) {
 
 		try {
 			Socket s = new Socket(host, port);
@@ -29,7 +29,7 @@ public class CheckPort {
 
 	}
 	
-	public boolean checkPort(String host, int port) {
+	public static boolean checkPort(String host, int port) {
 
 		try {
 			Socket s = new Socket(host, port);
