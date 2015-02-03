@@ -3,8 +3,7 @@ package utilityClasses;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -14,26 +13,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
-import java.lang.Class;
 
 public class ScoreInfo {
 
-	private String gameName;
-	private File gameScores;
-	private File gamePeople;
+	public void setScores(int score, String person, String gameName) {
 
-	public ScoreInfo(String gN) {
-		gameName = gN;
-//		gameScores = new File("Library/Application Support/Stoffel/Games/Infofiles/" + gameName.concat("Scores.txt"));
-//		gamePeople = new File("Library/Application Support/Stoffel/Games/Infofiles/" + gameName.concat("People.txt"));
+		File gameScores = getScoreFile(gameName);
+		File gamePeople = getPeopleFile(gameName);
 		
-		gameScores = new File("Infofiles/" + gameName.concat("Scores.txt"));
-		gamePeople = new File("Infofiles/" + gameName.concat("People.txt"));
-		
-	}
-
-	public void setScores(int score, String person) {
-
 		try {
 			if (!gameScores.exists()) {
 				gameScores.getParentFile().mkdirs();
@@ -92,8 +79,11 @@ public class ScoreInfo {
 
 	}
 
-	public ArrayList<String[]> getScores() {
+	public ArrayList<String[]> getScores(String gameName) {
 
+		File gameScores = getScoreFile(gameName);
+		File gamePeople = getPeopleFile(gameName);
+		
 		try {
 			Scanner scoreContents = new Scanner(gameScores);
 
@@ -159,9 +149,9 @@ public class ScoreInfo {
 		return results;
 	}
 
-	public void drawScores(Graphics g) {
+	public void drawScores(Graphics g, String gameName) {
 
-		ArrayList<String[]> results = getScores();
+		ArrayList<String[]> results = getScores(gameName);
 		g.setFont(new Font("Joystix", Font.BOLD, 17));
 		int i = 0;
 		int yStart = 40;
@@ -200,9 +190,8 @@ public class ScoreInfo {
 	public void enterName(Graphics g, int wSW, int wSH, int score, String pName) {
 
 		g.setFont(new Font("Joystix", Font.BOLD, 40));
-		CenteredText enter = new CenteredText("Enter", wSW, wSH, g, true, 100);
-		CenteredText enter1 = new CenteredText("Your Name", wSW, wSH, g, true,
-				170);
+		CenteredText.draw("Enter", 100, g);
+		CenteredText.draw("Your Name", 170, g);
 
 		int barWidth = 35;
 		int barSpace = 10 + barWidth;
@@ -211,32 +200,23 @@ public class ScoreInfo {
 		g.setFont(new Font("Joystix", Font.BOLD, 20));
 		for (int i = 0; i < 10; i++) {
 			if (pName.length() > i) {
-				CenteredText lx = new CenteredText(Character.toString(pName
-						.charAt(i)), barWidth, 8, g);
-				g.drawString(Character.toString(pName.charAt(i)), (barSpace * i)
-						+ startText + lx.x, 440);
+				CenteredText.draw(Character.toString(pName.charAt(i)), new Rectangle((barSpace * i) + startText, 440, barWidth, 8), g);
 			}
 			g.fillRect((barSpace * i) + startText, 442, barWidth, 8);
 		}
 	}
 	
-//	public void verifyFile() {
-//		
-//			try {
-//				gameScores.createNewFile();
-//				gamePeople.createNewFile();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//	}
-
-	// public static void main(String[] args) {
-	//
-	// ScoreInfo SI = new ScoreInfo("hole");
-	// ArrayList<String[]> scores = SI.getScores();
-	// SI.setScores(10, "BradyTest1");
-	// System.out.println();
-	//
-	// }
+	public static File getScoreFile(String gameName) {
+		
+//		return new File("Library/Application Support/Stoffel/Games/Infofiles/" + gameName.concat("Scores.txt"));
+		return new File("Infofiles/" + gameName.concat("Scores.txt"));
+		
+	}
+	
+public static File getPeopleFile(String gameName) {
+		
+//		return new File("Library/Application Support/Stoffel/Games/Infofiles/" + gameName.concat("People.txt"));
+		return new File("Infofiles/" + gameName.concat("People.txt"));
+		
+	}
 }

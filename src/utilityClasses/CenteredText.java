@@ -11,9 +11,11 @@ import java.awt.Rectangle;
  */
 public class CenteredText {
 
-	public static void draw(String text, int yVal, int width, int height,
-			Graphics g) {
+	public static void draw(String text, int yVal, Graphics g) {
 
+		int width = Window.WIDTH;
+		int height = Window.HEIGHT;
+		
 		FontMetrics fontInfo = g.getFontMetrics();
 		int textWidth = fontInfo.stringWidth(text);
 		int textHeight = fontInfo.getHeight();
