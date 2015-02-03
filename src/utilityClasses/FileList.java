@@ -10,41 +10,38 @@ import java.util.Scanner;
 
 public class FileList {
 
-	private String folderPath = "InfoFiles/";
-	private String fileName;
-	private String filePath;
-	private ArrayList<String> wordList = new ArrayList<String>();
+	private static String folderPath = "InfoFiles/";
+	private static ArrayList<String> wordList = new ArrayList<String>();
 
 	public static void main(String[] args) {
-		FileList runIt = new FileList();
-		runIt.runFromMain();
-	}
-
-	public void runFromMain() {
-
-	}
-
-	public FileList(String fileName) {
-		// TODO Auto-generated constructor stub
-
-		if (fileName.indexOf('.') == -1) {
-
-			fileName = fileName.concat(".txt");
-		}
-
-		this.fileName = fileName;
-		this.filePath = folderPath + fileName;
-		setFileList();
-
+		
 	}
 
 	public FileList() {
 		// TODO Auto-generated constructor stub
 
 	}
+	
+	public static String checkFileName(String fileName) {
+		
+		if (fileName.indexOf('.') == -1) {
 
-	public ArrayList<String> setFileList() {
+			fileName = fileName.concat(".txt");
+		}
+		return fileName;
+		
+	}
+	
+	public static String getFilePath(String fileName) {
+		
+		return folderPath + fileName;
+		
+	}
 
+ 	public static ArrayList<String> setFileList(String fileName) {
+
+ 		String filePath = getFilePath(fileName);
+ 		ArrayList<String> wordList = new ArrayList<String>();
 		Scanner input;
 		try {
 			input = new Scanner(new File(filePath));
@@ -57,14 +54,16 @@ public class FileList {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		
 		return wordList;
 
 	}
 
-	public void writeToFile() {
+	public static void writeToFile(String fileName) {
 
 		PrintWriter fileWriter;
+		String filePath = getFilePath(fileName);
 		try {
 			fileWriter = new PrintWriter(new FileWriter(filePath));
 
@@ -83,9 +82,10 @@ public class FileList {
 
 	}
 	
-	public void writeToFile(String newLine) {
+	public static void writeToFile(String fileName, String newLine) {
 
 		PrintWriter fileWriter;
+		String filePath = getFilePath(fileName);
 		wordList.add(newLine);
 		
 		try {
@@ -106,9 +106,10 @@ public class FileList {
 
 	}
 	
-	public void writeToFile(ArrayList<String> newLine) {
+	public static void writeToFile(String fileName, ArrayList<String> newLine) {
 
 		PrintWriter fileWriter;
+		String filePath = getFilePath(fileName);
 		wordList.addAll(newLine);
 		
 		try {
@@ -129,12 +130,12 @@ public class FileList {
 
 	}
 
-	public String[] get() {
+	public static String[] get() {
 
 		return getArray();
 	}
 
-	public String[] getArray() {
+	public static String[] getArray() {
 
 		String[] list = new String[wordList.size()];
 		wordList.toArray(list);
@@ -142,7 +143,7 @@ public class FileList {
 		return list;
 	}
 
-	public ArrayList<String> getFileList() {
+	public static ArrayList<String> getFileList() {
 
 		return wordList;
 	}
