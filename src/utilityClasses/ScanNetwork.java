@@ -213,7 +213,7 @@ public class ScanNetwork {
 	
 	public static String[] addRecentServers(String[] scannedIPS) {
 		
-		FileList servers = new FileList();
+		FileList servers = new FileList("recentServer");
 		
 		ArrayList<String> recentList = servers.getFileList();
 		
