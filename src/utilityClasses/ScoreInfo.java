@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 public class ScoreInfo {
 
-	public void setScores(int score, String person, String gameName) {
+	public static void setScores(int score, String person, String gameName) {
 
 		File gameScores = getScoreFile(gameName);
 		File gamePeople = getPeopleFile(gameName);
@@ -79,7 +79,7 @@ public class ScoreInfo {
 
 	}
 
-	public ArrayList<String[]> getScores(String gameName) {
+	public static ArrayList<String[]> getScores(String gameName) {
 
 		File gameScores = getScoreFile(gameName);
 		File gamePeople = getPeopleFile(gameName);
@@ -122,7 +122,7 @@ public class ScoreInfo {
 
 	}
 
-	public ArrayList<String[]> scoreOrder(ArrayList<Integer> scores,
+	public static ArrayList<String[]> scoreOrder(ArrayList<Integer> scores,
 			ArrayList<String> people) {
 
 		ArrayList<String[]> results = new ArrayList<String[]>();
@@ -149,7 +149,7 @@ public class ScoreInfo {
 		return results;
 	}
 
-	public void drawScores(Graphics g, String gameName) {
+	public static void drawScores(Graphics g, String gameName) {
 
 		ArrayList<String[]> results = getScores(gameName);
 		g.setFont(new Font("Joystix", Font.BOLD, 17));
@@ -187,7 +187,7 @@ public class ScoreInfo {
 		}
 	}
 
-	public void enterName(Graphics g, int wSW, int wSH, int score, String pName) {
+	public static void enterName(Graphics g, int wSW, int wSH, int score, String pName) {
 
 		g.setFont(new Font("Joystix", Font.BOLD, 40));
 		CenteredText.draw("Enter", 100, g);
