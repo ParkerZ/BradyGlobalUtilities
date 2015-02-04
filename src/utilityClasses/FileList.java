@@ -10,18 +10,6 @@ import java.util.Scanner;
 
 public class FileList {
 
-	private static String folderPath = "InfoFiles/";
-	private static ArrayList<String> wordList = new ArrayList<String>();
-
-	public static void main(String[] args) {
-
-	}
-
-	public FileList(String fileName) {
-		// TODO Auto-generated constructor stub
-		setFileList(fileName);
-	}
-
 	public static String checkFileName(String fileName) {
 
 		if (fileName.indexOf('.') == -1) {
@@ -32,15 +20,9 @@ public class FileList {
 
 	}
 
-	public static String getFilePath(String fileName) {
+	public static ArrayList<String> getFileList(String filePath) {
 
-		return folderPath + fileName;
-
-	}
-
-	public static ArrayList<String> setFileList(String fileName) {
-
-		String filePath = getFilePath(fileName);
+		filePath = checkFileName(filePath);
 		ArrayList<String> wordList = new ArrayList<String>();
 		Scanner input;
 		try {
@@ -59,14 +41,34 @@ public class FileList {
 
 	}
 
-	public static void writeToFile(String fileName) {
+	public static void addToFile(String filePath, String newLine) {
 
 		PrintWriter fileWriter;
-		String filePath = getFilePath(fileName);
-		try {
-			fileWriter = new PrintWriter(new FileWriter(filePath));
+		filePath = checkFileName(filePath);
 
-			for (String line : wordList) {
+		try {
+			fileWriter = new PrintWriter(new FileWriter(filePath, true));
+
+			fileWriter.println(newLine);
+
+			fileWriter.flush();
+			fileWriter.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void addToFile(String filePath, ArrayList<String> newLine) {
+
+		PrintWriter fileWriter;
+		filePath = checkFileName(filePath);
+
+		try {
+			fileWriter = new PrintWriter(new FileWriter(filePath, true));
+
+			for (String line : newLine) {
 
 				fileWriter.println(line);
 
@@ -81,16 +83,34 @@ public class FileList {
 
 	}
 
-	public static void writeToFile(String fileName, String newLine) {
+	public static void overwriteFile(String filePath, String newLine) {
 
 		PrintWriter fileWriter;
-		String filePath = getFilePath(fileName);
-		wordList.add(newLine);
+		filePath = checkFileName(filePath);
 
 		try {
 			fileWriter = new PrintWriter(new FileWriter(filePath));
 
-			for (String line : wordList) {
+			fileWriter.println(newLine);
+
+			fileWriter.flush();
+			fileWriter.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void overwriteFile(String filePath, ArrayList<String> newLine) {
+
+		PrintWriter fileWriter;
+		filePath = checkFileName(filePath);
+
+		try {
+			fileWriter = new PrintWriter(new FileWriter(filePath));
+
+			for (String line : newLine) {
 
 				fileWriter.println(line);
 
@@ -105,46 +125,13 @@ public class FileList {
 
 	}
 
-	public static void writeToFile(String fileName, ArrayList<String> newLine) {
+	public static String[] getFileArray(String filePath) {
 
-		PrintWriter fileWriter;
-		String filePath = getFilePath(fileName);
-		wordList.addAll(newLine);
-
-		try {
-			fileWriter = new PrintWriter(new FileWriter(filePath));
-
-			for (String line : wordList) {
-
-				fileWriter.println(line);
-
-			}
-
-			fileWriter.flush();
-			fileWriter.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
-	public static String[] get() {
-
-		return getArray();
-	}
-
-	public static String[] getArray() {
-
+		ArrayList<String> wordList = getFileList(filePath);
 		String[] list = new String[wordList.size()];
 		wordList.toArray(list);
 
 		return list;
-	}
-
-	public static ArrayList<String> getFileList() {
-
-		return wordList;
 	}
 
 }
