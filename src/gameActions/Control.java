@@ -46,6 +46,9 @@ public class Control extends JPanel implements Screen {
 
 	public int score;
 	public Character letter;
+	
+	public double startTime;
+	public double totalTime = 0;
 
 	public UserGame sub = (UserGame) this;
 
@@ -75,7 +78,7 @@ public class Control extends JPanel implements Screen {
 		rightKey = keyMap[1];
 		downKey = keyMap[2];
 		leftKey = keyMap[3];
-
+		
 	}
 
 	public void paintComponent(Graphics g) {
@@ -134,6 +137,25 @@ public class Control extends JPanel implements Screen {
 		g.setColor(Color.CYAN);
 		g.fillRect(20, 30, playerX, playerY);
 
+	}
+	
+	public void startTime() {
+		
+		startTime = System.currentTimeMillis();
+		
+	}
+	
+	public void stopTime() {
+		
+		totalTime = System.currentTimeMillis() - startTime;
+		startTime = System.currentTimeMillis();
+		
+	}
+	
+	public int getTime() {
+		
+		return (int) ((totalTime + System.currentTimeMillis() - startTime) * 1000);
+		
 	}
 
 	public void drawPaused(Graphics g) {
@@ -200,10 +222,12 @@ public class Control extends JPanel implements Screen {
 				playing = true;
 				startGame = false;
 				setKeys();
+				startTime();
 
 			} else if (endGame) {
 
 				sub.reset();
+				stopTime();
 				startGame = false;
 				playing = true;
 				nameEnter = false;
@@ -232,6 +256,15 @@ public class Control extends JPanel implements Screen {
 
 			playing = !playing;
 			paused = !paused;
+			
+			if (timer.isRunning()) {
+				timer.stop();
+				stopTime();
+			} else {
+				timer.start();
+				startTime();
+			}
+			
 		} else if (e.getKeyLocation() == KeyEvent.KEY_LOCATION_STANDARD
 				&& nameEnter) {
 
@@ -274,6 +307,7 @@ public class Control extends JPanel implements Screen {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (playing) {
+			
 			sub.moves();
 		}
 	}
