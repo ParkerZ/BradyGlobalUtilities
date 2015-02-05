@@ -18,6 +18,9 @@ public class Window {
 	 */
 	public static final int HEIGHT = 500;
 	
+	public static final boolean ALWAYS_ON_TOP = false;
+	public static final boolean RESIZEABLE = false;
+	
 	
 	public static final String FONT_NAME = "Joystix";
 	public static final int TITLE_SIZE = 80;
@@ -27,10 +30,17 @@ public class Window {
 	
 	public static final int YOU_WIN_SIZE = 60;
 	public static final int SCORE_LIST_SIZE = 17;
+	public static final int END_SCORE_SIZE = 40;
+	public static final int YOU_LOSE_SIZE = 60;
+	public static final int RESTART_SIZE = 20;
 	
 	public static final int TITLE_Y = 180;
 	public static final int ENTER_Y = 250;
 	public static final int START_Y = 280;
+	public static final int PAUSE_Y = 200;
+	public static final int END_SCORE_Y = 450;
+	public static final int YOU_LOSE_Y = 170;
+	public static final int RESTART_Y = 320;
 	
 	/**
 	 * Game name displayed in window bar and on title screen
