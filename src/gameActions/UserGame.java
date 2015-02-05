@@ -19,6 +19,26 @@ public class UserGame extends Control implements PlayerInterface {
 	 * boolean highScores
 	 */
 
+	/*
+	 * You can override these methods to customize actions
+	 * 
+	 * drawStart(Graphics g)
+	 * drawPlaying(Graphics g)
+	 * drawPaused(Graphics g)
+	 * drawEnd(Graphics g)
+	 * up()
+	 * down()
+	 * left()
+	 * right()
+	 * upReleased()
+	 * downReleased()
+	 * rightReleased()
+	 * leftReleased()
+	 * 
+	 */
+	
+	
+	
 	public UserGame() {
 
 		super();
