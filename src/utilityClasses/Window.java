@@ -1,12 +1,24 @@
 package utilityClasses;
 
+/**
+ * 
+ * All variables that the classes will use for sizing, names, and other constants for the game
+ * 
+ * @author Brady
+ *
+ */
 public class Window {
 
-	//Window size
+	/**
+	 * Window width size
+	 */
 	public static final int WIDTH = 500;
+	/**
+	 * Window height size
+	 */
 	public static final int HEIGHT = 500;
 	
-	//Font info
+	
 	public static final String FONT_NAME = "Joystix";
 	public static final int TITLE_SIZE = 80;
 	public static final int ENTER_TO_START_SIZE = 26;
@@ -20,10 +32,14 @@ public class Window {
 	public static final int ENTER_Y = 250;
 	public static final int START_Y = 280;
 	
-	
+	/**
+	 * Game name displayed in window bar and on title screen
+	 */
 	public static final String GAME_NAME = "Snake";
 
-	
+	/**
+	 * Path of folder where score and people files are
+	 */
 	public static final String FOLDER_PATH = "InfoFiles/";
 	
 	
