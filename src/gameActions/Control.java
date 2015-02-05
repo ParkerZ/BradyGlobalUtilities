@@ -204,12 +204,12 @@ public class Control extends JPanel implements Screen {
 	public void drawStart(Graphics g) {
 
 		g.setColor(Color.WHITE);
-		g.setFont(new Font("Joystix", Font.BOLD, 80));
-		CenteredText.draw(Window.GAME_NAME, 180, g);
-		g.setFont(new Font("Joystix", Font.BOLD, 20));
+		g.setFont(new Font("Joystix", Font.BOLD, Window.TITLE_SIZE));
+		CenteredText.draw(Window.GAME_NAME, Window.TITLE_Y, g);
+		g.setFont(new Font("Joystix", Font.BOLD, Window.ENTER_TO_START_SIZE));
 
-		CenteredText.draw("Press Enter to", 300, g);
-		CenteredText.draw("Start", 330, g);
+		CenteredText.draw("Press Enter to", Window.ENTER_Y, g);
+		CenteredText.draw("Start", Window.START_Y, g);
 
 		g.setFont(new Font("Joystix", Font.BOLD, 12));
 
@@ -236,9 +236,9 @@ public class Control extends JPanel implements Screen {
 	 */
 	public void drawPaused(Graphics g) {
 
-		g.setFont(new Font("Joystix", Font.BOLD, 60));
+		g.setFont(new Font("Joystix", Font.BOLD, Window.PAUSE_SIZE));
 		g.setColor(Color.WHITE);
-		CenteredText.draw("Paused", 200, g);
+		CenteredText.draw("Paused", Window.PAUSE_Y, g);
 
 	}
 	
@@ -248,17 +248,17 @@ public class Control extends JPanel implements Screen {
  */
 	public void drawEnd(Graphics g) {
 
-		g.setFont(new Font("Joystix", Font.BOLD, 40));
+		g.setFont(new Font("Joystix", Font.BOLD, Window.END_SCORE_SIZE));
 		g.setColor(Color.WHITE);
-		CenteredText.draw(String.valueOf(score), 450, g);
+		CenteredText.draw(String.valueOf(score), Window.END_SCORE_Y, g);
 
-		g.setFont(new Font("Joystix", Font.BOLD, 60));
+		g.setFont(new Font("Joystix", Font.BOLD, Window.YOU_LOSE_SIZE));
 
-		CenteredText.draw("You Lose!", 170, g);
+		CenteredText.draw("You Lose!", Window.YOU_LOSE_Y, g);
 
-		g.setFont(new Font("Joystix", Font.BOLD, 26));
+		g.setFont(new Font("Joystix", Font.BOLD, Window.RESTART_SIZE));
 
-		CenteredText.draw("Enter to Restart", 320, g);
+		CenteredText.draw("Enter to Restart", Window.RESTART_Y, g);
 
 	}
 	/**
