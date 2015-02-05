@@ -20,6 +20,8 @@ public class Runner {
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
+		
+		//so doesn't flicker
 		frame.setResizable(false);
 		
 //		frame.setAlwaysOnTop(true);
