@@ -15,16 +15,60 @@ import utilityClasses.*;
 
 public class Control extends JPanel implements Screen {
 
+	/**
+	 * When start screen is showing
+	 * Paint checks this variable for whether or not draw the start screen
+	 */
 	public boolean startGame = true;
+	/**
+	 * When game is being played
+	 * Paint checks this variable for whether or not draw playing field
+	 */
 	public boolean playing = false;
+	/**
+	 * When game is paused
+	 * Paint checks this variable for whether or not draw the pause screen
+	 */
 	public boolean paused = false;
+	/**
+	 * When end screen is showing
+	 * Paint checks this variable for whether or not draw the game over screen
+	 */
 	public boolean endGame = false;
+	/**
+	 * When entering name screen is showing
+	 * Paint checks this variable for whether or not draw the enter name screen
+	 */
 	public boolean nameEnter = false;
+	/**
+	 * When high scores are listed on screen
+	 * Paint checks this variable for whether or not draw the high score screen
+	 */
 	public boolean highScores = false;
 
+	/**
+	 * The value for the upKey
+	 * This can be changed to suit the user of player
+	 * 
+	 */
 	public int upKey = KeyEvent.VK_UP;
+	/**
+	 * The value for the downKey
+	 * This can be changed to suit the user of player
+	 * 
+	 */
 	public int downKey = KeyEvent.VK_DOWN;
+	/**
+	 * The value for the leftKey
+	 * This can be changed to suit the user of player
+	 * 
+	 */
 	public int leftKey = KeyEvent.VK_LEFT;
+	/**
+	 * The value for the rightKey
+	 * This can be changed to suit the user of player
+	 * 
+	 */
 	public int rightKey = KeyEvent.VK_RIGHT;
 
 	public boolean upPressed = false;
@@ -32,17 +76,38 @@ public class Control extends JPanel implements Screen {
 	public boolean leftPressed = false;
 	public boolean rightPressed = false;
 
+	/**
+	 * keyMap - modify this to change key locations
+	 * Gets modified when on the start screen and keys are pressed
+	 * Assigned in order of when pressed
+	 * then the key are mapped when the game starts
+	 */
 	public int[] keyMap = { KeyEvent.VK_UP, KeyEvent.VK_RIGHT,
 			KeyEvent.VK_DOWN, KeyEvent.VK_LEFT };
 
 	public int keyIndex = 0;
 
+	/**
+	 * The value that deltaX and deltaY will change player position by
+	 */
 	public int movementVar = 10;
+	/**
+	 * How much a player moves in the x direction
+	 */
 	public int deltaX = movementVar;
+	/**
+	 * How much a player moves in the y direction
+	 */
 	public int deltaY = 0;
 	public String pName;
 
+	/**
+	 * player x position
+	 */
 	public int playerX;
+	/**
+	 * player y position
+	 */
 	public int playerY;
 
 	public Timer timer;
@@ -77,6 +142,10 @@ public class Control extends JPanel implements Screen {
 
 	}
 
+	/**
+	 * can be called to set the direction keys if they have been modified
+	 * and sets the keyMap when the game starts
+	 */
 	public void setKeys() {
 
 		upKey = keyMap[0];
@@ -86,6 +155,12 @@ public class Control extends JPanel implements Screen {
 
 	}
 
+	/**
+	 * This paintComponent checks which state the game is in using the startGame, endGame, etc.
+	 * to know what to paint. Attempts to call methods in the UserGame class, which override methods in this class
+	 * so that is the user has not defined a custom method, a default one is drawn
+	 * 
+	 */
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
@@ -120,7 +195,12 @@ public class Control extends JPanel implements Screen {
 		}
 
 	}
-
+	/**
+	 * Draws the start screen.
+	 * gets game name from Window class
+	 * 
+	 * @param g
+	 */
 	public void drawStart(Graphics g) {
 
 		g.setColor(Color.WHITE);
@@ -137,6 +217,11 @@ public class Control extends JPanel implements Screen {
 				30, g);
 
 	}
+	/**
+	 * Draws the screen when playing
+	 * 
+	 * @param g
+	 */
 
 	public void drawPlaying(Graphics g) {
 
@@ -145,6 +230,10 @@ public class Control extends JPanel implements Screen {
 
 	}
 
+	/**
+	 * draws the word "Paused" in the middle of the screen
+	 * @param g
+	 */
 	public void drawPaused(Graphics g) {
 
 		g.setFont(new Font("Joystix", Font.BOLD, 60));
@@ -152,7 +241,11 @@ public class Control extends JPanel implements Screen {
 		CenteredText.draw("Paused", 200, g);
 
 	}
-
+	
+/**
+ * Draws the end game screen
+ * @param g
+ */
 	public void drawEnd(Graphics g) {
 
 		g.setFont(new Font("Joystix", Font.BOLD, 40));
@@ -168,26 +261,36 @@ public class Control extends JPanel implements Screen {
 		CenteredText.draw("Enter to Restart", 320, g);
 
 	}
-
+	/**
+	 * starts the timer that can be displayed on screen.
+	 * Use getTime() to get the number seconds that have passed
+	 */
 	public void startTime() {
 
 		startTime = System.currentTimeMillis();
 		
 	}
-
+	/**
+	 * Pauses the timer
+	 */
 	public void stopTime() {
 
 		totalTime += System.currentTimeMillis() - startTime;
 		startTime = System.currentTimeMillis();
 
 	}
-
+	/**
+	 * gets the number of seconds that have passed since the timer was started
+	 * @return
+	 */
 	public int getTime() {
 
 		return (int) ((totalTime + System.currentTimeMillis() - startTime) / 1000);
 
 	}
-	
+	/**
+	 * resets the time passed and sets the start time to the current time
+	 */
 	public void resetTime() {
 		totalTime = 0;
 		startTime = System.currentTimeMillis();
@@ -315,6 +418,10 @@ public class Control extends JPanel implements Screen {
 
 	}
 
+	/**
+	 * Gets called when timer activates an action, and the timer fires very quickly.
+	 * Calls the moves method in the UserGame class if the playing variable is true
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -359,6 +466,10 @@ public class Control extends JPanel implements Screen {
 
 	}
 
+	/**
+	 * What to set variables to when upKey is pressed.
+	 * Called by keyPressed
+	 */
 	@Override
 	public void up() {
 		// TODO Auto-generated method stub
@@ -366,6 +477,10 @@ public class Control extends JPanel implements Screen {
 		deltaY = -movementVar;
 
 	}
+	/**
+	 * What to set variables to when upKey is pressed
+	 * Called by keyPressed
+	 */
 
 	@Override
 	public void down() {
@@ -374,6 +489,10 @@ public class Control extends JPanel implements Screen {
 		deltaY = movementVar;
 
 	}
+	/**
+	 * What to set variables to when upKey is pressed
+	 * Called by keyPressed
+	 */
 
 	@Override
 	public void left() {
@@ -381,6 +500,10 @@ public class Control extends JPanel implements Screen {
 		deltaX = -movementVar;
 
 	}
+	/**
+	 * What to set variables to when upKey is pressed
+	 * Called by keyPressed
+	 */
 
 	@Override
 	public void right() {
@@ -389,24 +512,40 @@ public class Control extends JPanel implements Screen {
 		deltaX = movementVar;
 
 	}
+	/**
+	 * What to set variables to when upKey is released
+	 * Called by keyReleased
+	 */
 
 	@Override
 	public void upReleased() {
 		// TODO Auto-generated method stub
 		deltaY = 0;
 	}
+	/**
+	 * What to set variables to when downKey is released
+	 * Called by keyReleased
+	 */
 
 	@Override
 	public void downReleased() {
 		// TODO Auto-generated method stub
 		deltaY = 0;
 	}
+	/**
+	 * What to set variables to when leftKey is released
+	 * Called by keyReleased
+	 */
 
 	@Override
 	public void leftReleased() {
 		// TODO Auto-generated method stub
 		deltaX = 0;
 	}
+	/**
+	 * What to set variables to when rightKey is released
+	 * Called by keyReleased
+	 */
 
 	@Override
 	public void rightReleased() {
