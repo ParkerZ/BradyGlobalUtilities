@@ -13,6 +13,9 @@ public class Runner {
 		run();
 		
 	}
+	/**
+	 * Runs the game. Makes a new JFrame and adds the UserGame to the frame
+	 */
 	public static void run() {
 		
 		
