@@ -213,15 +213,13 @@ public class ScanNetwork {
 	
 	public static String[] addRecentServers(String[] scannedIPS) {
 		
-		FileList servers = new FileList("recentServer");
-		
-		ArrayList<String> recentList = servers.getFileList();
+		ArrayList<String> recentList = FileList.getFileList(Window.FOLDER_PATH + "recentServers");
 		
 		for (String currentServer : scannedIPS) {
 			
 			if (!recentList.contains(currentServer)) {
 				
-				servers.writeToFile("recentServer", currentServer);
+				FileList.addToFile(Window.FOLDER_PATH + "recentServer", currentServer);
 				
 			}
 		}

@@ -83,6 +83,26 @@ public class FileList {
 
 	}
 
+	public static void insertLine(String filePath, String newLine, int index) {
+
+		ArrayList<String> wordList = getFileList(filePath);
+
+		wordList.add(index, newLine);
+		overwriteFile(filePath, wordList);
+
+	}
+
+	public static void insertLines(String filePath, ArrayList<String> newLines,
+			int index) {
+
+		ArrayList<String> wordList = getFileList(filePath);
+
+		wordList.addAll(index, newLines);
+
+		overwriteFile(filePath, wordList);
+
+	}
+
 	public static void overwriteFile(String filePath, String newLine) {
 
 		PrintWriter fileWriter;

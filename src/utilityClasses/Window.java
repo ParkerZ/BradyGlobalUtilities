@@ -11,6 +11,8 @@ public class Window {
 	public static final int TITLE_SIZE = 80;
 	public static final int ENTER_TO_START_SIZE = 26;
 	
+	public static final int PAUSE_SIZE = 60;
+	
 	public static final int YOU_WIN_SIZE = 60;
 	public static final int SCORE_LIST_SIZE = 17;
 	
@@ -18,8 +20,11 @@ public class Window {
 	public static final int ENTER_Y = 250;
 	public static final int START_Y = 280;
 	
+	
 	public static final String GAME_NAME = "Snake";
 
+	
+	public static final String FOLDER_PATH = "InfoFiles/";
 	
 	
  	public Window() {
