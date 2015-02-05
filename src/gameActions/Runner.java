@@ -25,14 +25,15 @@ public class Runner {
 		frame.setLayout(new BorderLayout());
 		
 		//so doesn't flicker
-		frame.setResizable(false);
+		frame.setResizable(Window.RESIZEABLE);
+		frame.setAlwaysOnTop(Window.ALWAYS_ON_TOP);
 		
 //		frame.setAlwaysOnTop(true);
 
 		UserGame game = new UserGame();
 		frame.add(game, BorderLayout.CENTER);
 
-		frame.setSize(500, 500);
+		frame.setSize(Window.WIDTH, Window.HEIGHT);
 		frame.setVisible(true);
 		
 	}
