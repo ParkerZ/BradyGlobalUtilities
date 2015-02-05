@@ -9,9 +9,10 @@ import java.awt.peer.MouseInfoPeer;
 public interface Screen extends KeyListener, ActionListener, MouseListener {
 
 	
-	public void moves();
-	public void reset();
-
+//	public void moves();
+//	public void reset();
+//	public void draw();
+//	
 	public void up();
 	public void down();
 	public void left();

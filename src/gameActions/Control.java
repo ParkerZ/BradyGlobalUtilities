@@ -1,6 +1,7 @@
 package gameActions;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -36,6 +37,8 @@ public class Control extends JPanel implements Screen {
 	public int deltaY = 0;
 	public String pName;
 	
+	public int playerX;
+	public int playerY;
 	
 	public Timer timer;
 	public int origSpeed = movementVar;
@@ -43,10 +46,30 @@ public class Control extends JPanel implements Screen {
 	
 	public int score;
 	public Character letter;
+	
+	public UserGame sub = (UserGame) this;
 
 	public Control() {
 		
+		
+		setBackground(Color.BLACK);
+		setFocusable(true);
+		addKeyListener(this);
+		
+		sub.setup();
+
+		timer = new Timer((int) (1000 / speed), this);
+//		reset();
+		timer.start();
+
 	
+	}
+	
+	public void setBackgroundColor(Color c) {
+		
+		this.setBackground(c);
+		
+		
 	}
 	
 	public void setKeys() {
@@ -102,7 +125,7 @@ public class Control extends JPanel implements Screen {
 
 			} else if (endGame) {
 
-				reset();
+				sub.reset();
 				startGame = false;
 				playing = true;
 				nameEnter = false;
@@ -144,6 +167,11 @@ public class Control extends JPanel implements Screen {
 		
 		
 	}
+	
+	public void paintComponent(Graphics g) {
+		
+		sub.draw(g);
+	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -154,7 +182,7 @@ public class Control extends JPanel implements Screen {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		sub.moves();
 	}
 
 	@Override
@@ -187,17 +215,6 @@ public class Control extends JPanel implements Screen {
 		
 	}
 
-	@Override
-	public void moves() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void reset() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void up() {
