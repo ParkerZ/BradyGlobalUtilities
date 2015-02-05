@@ -27,6 +27,11 @@ public class Control extends JPanel implements Screen {
 	public int leftKey = KeyEvent.VK_LEFT;
 	public int rightKey = KeyEvent.VK_RIGHT;
 
+	public boolean upPressed = false;
+	public boolean downPressed = false;
+	public boolean leftPressed = false;
+	public boolean rightPressed = false;
+
 	public int[] keyMap = { KeyEvent.VK_UP, KeyEvent.VK_RIGHT,
 			KeyEvent.VK_DOWN, KeyEvent.VK_LEFT };
 
@@ -46,7 +51,7 @@ public class Control extends JPanel implements Screen {
 
 	public int score;
 	public Character letter;
-	
+
 	public double startTime;
 	public double totalTime = 0;
 
@@ -78,11 +83,12 @@ public class Control extends JPanel implements Screen {
 		rightKey = keyMap[1];
 		downKey = keyMap[2];
 		leftKey = keyMap[3];
-		
+
 	}
 
 	public void paintComponent(Graphics g) {
 
+		super.paintComponent(g);
 		sub.draw(g);
 
 		if (startGame) {
@@ -138,25 +144,6 @@ public class Control extends JPanel implements Screen {
 		g.fillRect(20, 30, playerX, playerY);
 
 	}
-	
-	public void startTime() {
-		
-		startTime = System.currentTimeMillis();
-		
-	}
-	
-	public void stopTime() {
-		
-		totalTime = System.currentTimeMillis() - startTime;
-		startTime = System.currentTimeMillis();
-		
-	}
-	
-	public int getTime() {
-		
-		return (int) ((totalTime + System.currentTimeMillis() - startTime) * 1000);
-		
-	}
 
 	public void drawPaused(Graphics g) {
 
@@ -180,6 +167,30 @@ public class Control extends JPanel implements Screen {
 
 		CenteredText.draw("Enter to Restart", 320, g);
 
+	}
+
+	public void startTime() {
+
+		startTime = System.currentTimeMillis();
+		
+	}
+
+	public void stopTime() {
+
+		totalTime += System.currentTimeMillis() - startTime;
+		startTime = System.currentTimeMillis();
+
+	}
+
+	public int getTime() {
+
+		return (int) ((totalTime + System.currentTimeMillis() - startTime) / 1000);
+
+	}
+	
+	public void resetTime() {
+		totalTime = 0;
+		startTime = System.currentTimeMillis();
 	}
 
 	@Override
@@ -256,7 +267,7 @@ public class Control extends JPanel implements Screen {
 
 			playing = !playing;
 			paused = !paused;
-			
+
 			if (timer.isRunning()) {
 				timer.stop();
 				stopTime();
@@ -264,7 +275,8 @@ public class Control extends JPanel implements Screen {
 				timer.start();
 				startTime();
 			}
-			
+			repaint();
+
 		} else if (e.getKeyLocation() == KeyEvent.KEY_LOCATION_STANDARD
 				&& nameEnter) {
 
@@ -307,7 +319,12 @@ public class Control extends JPanel implements Screen {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (playing) {
-			
+
+			// if (upPressed) up();
+			// if (downPressed) down();
+			// if (leftPressed) left();
+			// if (rightPressed) right();
+
 			sub.moves();
 		}
 	}
@@ -345,7 +362,7 @@ public class Control extends JPanel implements Screen {
 	@Override
 	public void up() {
 		// TODO Auto-generated method stub
-		deltaX = 0;
+
 		deltaY = -movementVar;
 
 	}
@@ -353,7 +370,7 @@ public class Control extends JPanel implements Screen {
 	@Override
 	public void down() {
 		// TODO Auto-generated method stub
-		deltaX = 0;
+
 		deltaY = movementVar;
 
 	}
@@ -362,7 +379,6 @@ public class Control extends JPanel implements Screen {
 	public void left() {
 		// TODO Auto-generated method stub
 		deltaX = -movementVar;
-		deltaY = 0;
 
 	}
 
@@ -371,38 +387,31 @@ public class Control extends JPanel implements Screen {
 		// TODO Auto-generated method stub
 
 		deltaX = movementVar;
-		deltaY = 0;
 
 	}
 
 	@Override
 	public void upReleased() {
 		// TODO Auto-generated method stub
-		zeroDeltas();
+		deltaY = 0;
 	}
 
 	@Override
 	public void downReleased() {
 		// TODO Auto-generated method stub
-		zeroDeltas();
+		deltaY = 0;
 	}
 
 	@Override
 	public void leftReleased() {
 		// TODO Auto-generated method stub
-		zeroDeltas();
+		deltaX = 0;
 	}
 
 	@Override
 	public void rightReleased() {
 		// TODO Auto-generated method stub
-		zeroDeltas();
-	}
-	
-	public void zeroDeltas() {
-		
 		deltaX = 0;
-		deltaY = 0;	
 	}
 
 }

@@ -22,7 +22,7 @@ public class UserGame extends Control implements PlayerInterface {
 	public UserGame() {
 
 		super();
-
+		
 	}
 
 	public void draw(Graphics g) {
@@ -31,8 +31,12 @@ public class UserGame extends Control implements PlayerInterface {
 
 	@Override
 	public void drawPlaying(Graphics g) {
+		
 		g.setColor(Color.CYAN);
 		g.fillRect(20, 30, playerX, playerY);
+		
+		
+		g.drawString(String.valueOf(getTime()), 5, 15);
 
 	}
 
