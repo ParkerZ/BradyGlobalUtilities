@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import utilityClasses.*;
+import gameFolder.*;
 
 public class Control extends JPanel implements Screen {
 
@@ -190,7 +191,7 @@ public class Control extends JPanel implements Screen {
 
 		} else if (highScores) {
 
-			ScoreInfo.drawScores(g, Window.GAME_NAME);
+			ScoreInfo.drawScores(g, GameInfo.TXT_FILE);
 
 		}
 
@@ -204,14 +205,14 @@ public class Control extends JPanel implements Screen {
 	public void drawStart(Graphics g) {
 
 		g.setColor(Color.WHITE);
-		g.setFont(new Font("Joystix", Font.BOLD, Window.TITLE_SIZE));
-		CenteredText.draw(Window.GAME_NAME, Window.TITLE_Y, g);
-		g.setFont(new Font("Joystix", Font.BOLD, Window.ENTER_TO_START_SIZE));
+		g.setFont(new Font(Window.FONT_NAME, Font.BOLD, Window.TITLE_SIZE));
+		CenteredText.draw(GameInfo.NAME, Window.TITLE_Y, g);
+		g.setFont(new Font(Window.FONT_NAME, Font.BOLD, Window.ENTER_TO_START_SIZE));
 
 		CenteredText.draw("Press Enter to", Window.ENTER_Y, g);
 		CenteredText.draw("Start", Window.START_Y, g);
 
-		g.setFont(new Font("Joystix", Font.BOLD, 12));
+		g.setFont(new Font(Window.FONT_NAME, Font.BOLD, 12));
 
 		CenteredText.draw("Press keys Up, Right, Down, Left to map new keys",
 				30, g);
@@ -236,7 +237,7 @@ public class Control extends JPanel implements Screen {
 	 */
 	public void drawPaused(Graphics g) {
 
-		g.setFont(new Font("Joystix", Font.BOLD, Window.PAUSE_SIZE));
+		g.setFont(new Font(Window.FONT_NAME, Font.BOLD, Window.PAUSE_SIZE));
 		g.setColor(Color.WHITE);
 		CenteredText.draw("Paused", Window.PAUSE_Y, g);
 
@@ -248,15 +249,15 @@ public class Control extends JPanel implements Screen {
  */
 	public void drawEnd(Graphics g) {
 
-		g.setFont(new Font("Joystix", Font.BOLD, Window.END_SCORE_SIZE));
+		g.setFont(new Font(Window.FONT_NAME, Font.BOLD, Window.END_SCORE_SIZE));
 		g.setColor(Color.WHITE);
 		CenteredText.draw(String.valueOf(score), Window.END_SCORE_Y, g);
 
-		g.setFont(new Font("Joystix", Font.BOLD, Window.YOU_LOSE_SIZE));
+		g.setFont(new Font(Window.FONT_NAME, Font.BOLD, Window.YOU_LOSE_SIZE));
 
 		CenteredText.draw("You Lose!", Window.YOU_LOSE_Y, g);
 
-		g.setFont(new Font("Joystix", Font.BOLD, Window.RESTART_SIZE));
+		g.setFont(new Font(Window.FONT_NAME, Font.BOLD, Window.RESTART_SIZE));
 
 		CenteredText.draw("Enter to Restart", Window.RESTART_Y, g);
 
@@ -355,7 +356,7 @@ public class Control extends JPanel implements Screen {
 				nameEnter = false;
 				highScores = true;
 				ScoreInfo.setScores(score, pName, Window.FOLDER_PATH
-						+ Window.GAME_NAME);
+						+ GameInfo.NAME);
 			} else if (highScores) {
 
 				highScores = false;

@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 import utilityClasses.Window;
+import gameFolder.GameInfo;
 
 public class Runner {
 
@@ -19,7 +20,7 @@ public class Runner {
 	public static void run() {
 		
 		
-		JFrame frame = new JFrame(Window.GAME_NAME + "!");
+		JFrame frame = new JFrame(GameInfo.NAME + "!");
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
