@@ -344,25 +344,31 @@ public class Control extends JPanel implements Screen {
 	@Override
 	public void upReleased() {
 		// TODO Auto-generated method stub
-
+		zeroDeltas();
 	}
 
 	@Override
 	public void downReleased() {
 		// TODO Auto-generated method stub
-
+		zeroDeltas();
 	}
 
 	@Override
 	public void leftReleased() {
 		// TODO Auto-generated method stub
-
+		zeroDeltas();
 	}
 
 	@Override
 	public void rightReleased() {
 		// TODO Auto-generated method stub
-
+		zeroDeltas();
+	}
+	
+	public void zeroDeltas() {
+		
+		deltaX = 0;
+		deltaY = 0;	
 	}
 
 }

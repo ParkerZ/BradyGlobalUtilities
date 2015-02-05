@@ -44,6 +44,12 @@ public class UserGame extends Control implements PlayerInterface {
 		super.repaint();
 
 	}
+	
+	public boolean checkIfDead() {
+		
+		
+		return false;
+	}
 
 	public void reset() {
 
