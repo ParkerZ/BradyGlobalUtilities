@@ -187,8 +187,10 @@ public class ScoreInfo {
 		}
 	}
 
-	public static void enterName(Graphics g, int wSW, int wSH, int score, String pName) {
+	public static void enterName(Graphics g, int score, String pName) {
 
+		int wSW = Window.WIDTH;
+		int wSH = Window.HEIGHT;
 		g.setFont(new Font("Joystix", Font.BOLD, 40));
 		CenteredText.draw("Enter", 100, g);
 		CenteredText.draw("Your Name", 170, g);

@@ -1,9 +1,12 @@
 package gameActions;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.Timer;
+
+import utilityClasses.CenteredText;
 
 public class UserGame extends Control implements PlayerInterface {
 
@@ -15,31 +18,33 @@ public class UserGame extends Control implements PlayerInterface {
 	 * boolean startGame boolean playing boolean endGame boolean nameEnter
 	 * boolean highScores
 	 */
+
 	public UserGame() {
-		// TODO Auto-generated constructor stub
 
 		super();
+
 	}
-	
 
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void drawPlaying(Graphics g) {
 		g.setColor(Color.CYAN);
 		g.fillRect(20, 30, playerX, playerY);
 
 	}
-	
+
 	public void moves() {
 
-		playerX++;
-		playerY++;
+		playerX += deltaX;
+		playerY += deltaY;
 
 		super.repaint();
 
 	}
 
-	
 	public void reset() {
 
 		setup();
@@ -48,8 +53,9 @@ public class UserGame extends Control implements PlayerInterface {
 
 	@Override
 	public void setup() {
-		// TODO Auto-generated method stub
 
+		deltaX = 2;
+		deltaY = 2;
 		playerX = 100;
 		playerY = 100;
 
