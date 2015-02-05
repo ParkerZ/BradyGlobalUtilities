@@ -1,7 +1,13 @@
 package gameActions;
 
 import java.awt.Graphics;
-
+/**
+ * Methods that UserGame needs to have, the draw methods are in control, so only need of you want a custom
+ * screen
+ * 
+ * @author Brady
+ *
+ */
 public interface PlayerInterface {
 
 	public void moves();
