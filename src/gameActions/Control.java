@@ -426,6 +426,13 @@ public class Control extends JPanel implements Screen {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if (sub.checkIfDead()) {
+			
+			playing = false;
+			nameEnter = true;
+			
+		}
+		
 		if (playing) {
 
 			// if (upPressed) up();
@@ -476,82 +483,90 @@ public class Control extends JPanel implements Screen {
 		// TODO Auto-generated method stub
 
 		deltaY = -movementVar;
+		upPressed = true;
 
 	}
+	
 	/**
 	 * What to set variables to when upKey is pressed
 	 * Called by keyPressed
 	 */
-
 	@Override
 	public void down() {
 		// TODO Auto-generated method stub
 
 		deltaY = movementVar;
+		downPressed = true;
 
 	}
+	
 	/**
 	 * What to set variables to when upKey is pressed
 	 * Called by keyPressed
 	 */
-
 	@Override
 	public void left() {
 		// TODO Auto-generated method stub
 		deltaX = -movementVar;
+		leftPressed = true;
 
 	}
+	
 	/**
 	 * What to set variables to when upKey is pressed
 	 * Called by keyPressed
 	 */
-
 	@Override
 	public void right() {
 		// TODO Auto-generated method stub
 
 		deltaX = movementVar;
+		rightPressed = true;
 
 	}
+	
 	/**
 	 * What to set variables to when upKey is released
 	 * Called by keyReleased
 	 */
-
 	@Override
 	public void upReleased() {
 		// TODO Auto-generated method stub
 		deltaY = 0;
+		upPressed = false;
 	}
+	
 	/**
 	 * What to set variables to when downKey is released
 	 * Called by keyReleased
 	 */
-
 	@Override
 	public void downReleased() {
 		// TODO Auto-generated method stub
 		deltaY = 0;
+		downPressed = false;
 	}
+	
 	/**
 	 * What to set variables to when leftKey is released
 	 * Called by keyReleased
 	 */
-
 	@Override
 	public void leftReleased() {
 		// TODO Auto-generated method stub
 		deltaX = 0;
+		leftPressed = false;
 	}
+	
 	/**
 	 * What to set variables to when rightKey is released
 	 * Called by keyReleased
 	 */
-
 	@Override
 	public void rightReleased() {
 		// TODO Auto-generated method stub
 		deltaX = 0;
+		rightPressed = false;
 	}
 
 }
