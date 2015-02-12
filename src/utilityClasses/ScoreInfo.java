@@ -1,5 +1,7 @@
 package utilityClasses;
 
+import gameFolder.GameInfo;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -211,14 +213,14 @@ public class ScoreInfo {
 	public static File getScoreFile(String gameName) {
 		
 //		return new File("Library/Application Support/Stoffel/Games/Infofiles/" + gameName.concat("Scores.txt"));
-		return new File("Infofiles/" + gameName.concat("Scores.txt"));
+		return new File(GameInfo.FOLDER_PATH + gameName.concat("Scores.txt"));
 		
 	}
 	
 public static File getPeopleFile(String gameName) {
 		
 //		return new File("Library/Application Support/Stoffel/Games/Infofiles/" + gameName.concat("People.txt"));
-		return new File("Infofiles/" + gameName.concat("People.txt"));
+		return new File(GameInfo.FOLDER_PATH + gameName.concat("People.txt"));
 		
 	}
 }
