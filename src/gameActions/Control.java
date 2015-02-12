@@ -100,7 +100,7 @@ public class Control extends JPanel implements Screen {
 	 * How much a player moves in the y direction
 	 */
 	public int deltaY = 0;
-	public String pName;
+	public String pName = "";
 
 	/**
 	 * player x position
@@ -367,7 +367,7 @@ public class Control extends JPanel implements Screen {
 
 			}
 
-		} else if (e.getKeyCode() == KeyEvent.VK_SPACE && !nameEnter) {
+		} else if (e.getKeyCode() == KeyEvent.VK_SPACE && (playing || paused)) {
 
 			playing = !playing;
 			paused = !paused;
@@ -426,12 +426,7 @@ public class Control extends JPanel implements Screen {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (sub.checkIfDead()) {
-			
-			playing = false;
-			nameEnter = true;
-			
-		}
+		
 		
 		if (playing) {
 
@@ -441,7 +436,15 @@ public class Control extends JPanel implements Screen {
 			// if (rightPressed) right();
 
 			sub.moves();
+			
+			if (sub.checkIfDead()) {
+				
+				playing = false;
+				nameEnter = true;
+				
+			}
 		}
+		repaint();
 	}
 
 	@Override
@@ -482,7 +485,7 @@ public class Control extends JPanel implements Screen {
 	public void up() {
 		// TODO Auto-generated method stub
 
-		deltaY = -movementVar;
+//		deltaY = -movementVar;
 		upPressed = true;
 
 	}
@@ -495,7 +498,7 @@ public class Control extends JPanel implements Screen {
 	public void down() {
 		// TODO Auto-generated method stub
 
-		deltaY = movementVar;
+//		deltaY = movementVar;
 		downPressed = true;
 
 	}
@@ -507,7 +510,7 @@ public class Control extends JPanel implements Screen {
 	@Override
 	public void left() {
 		// TODO Auto-generated method stub
-		deltaX = -movementVar;
+//		deltaX = -movementVar;
 		leftPressed = true;
 
 	}
@@ -520,7 +523,7 @@ public class Control extends JPanel implements Screen {
 	public void right() {
 		// TODO Auto-generated method stub
 
-		deltaX = movementVar;
+//		deltaX = movementVar;
 		rightPressed = true;
 
 	}
@@ -532,7 +535,7 @@ public class Control extends JPanel implements Screen {
 	@Override
 	public void upReleased() {
 		// TODO Auto-generated method stub
-		deltaY = 0;
+//		deltaY = 0;
 		upPressed = false;
 	}
 	
@@ -543,7 +546,7 @@ public class Control extends JPanel implements Screen {
 	@Override
 	public void downReleased() {
 		// TODO Auto-generated method stub
-		deltaY = 0;
+//		deltaY = 0;
 		downPressed = false;
 	}
 	
@@ -554,7 +557,7 @@ public class Control extends JPanel implements Screen {
 	@Override
 	public void leftReleased() {
 		// TODO Auto-generated method stub
-		deltaX = 0;
+//		deltaX = 0;
 		leftPressed = false;
 	}
 	
@@ -565,7 +568,7 @@ public class Control extends JPanel implements Screen {
 	@Override
 	public void rightReleased() {
 		// TODO Auto-generated method stub
-		deltaX = 0;
+//		deltaX = 0;
 		rightPressed = false;
 	}
 

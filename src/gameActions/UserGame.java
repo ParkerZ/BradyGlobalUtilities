@@ -78,7 +78,7 @@ public class UserGame extends Control implements PlayerInterface {
 		playerX += deltaX;
 		playerY += deltaY;
 
-		super.repaint();
+		
 
 	}
 	/**
