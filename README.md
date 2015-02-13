@@ -36,13 +36,13 @@ Interface<br>
 #####Summary:<br>
 UserGame implements this. Ensures that methods for game play and settings can be called<br>
 Methods Summary:<br>
-moves - gets called every refresh - so add movement and everything goes here<br>
-checkIfDead - return true of false if game should end<br>
-draw - what should be drawn on all screens<br>
-setup - used to initialize all variable and asign values<br>
-drawStart - What should be drawn on start screen<br>
-drawPlaying - everything that should be drawn while playing<br>
-drawEnd - drawing the end screen<br>
+**moves** - gets called every refresh - so add movement and everything goes here<br>
+**checkIfDead** - return true of false if game should end<br>
+**draw** - what should be drawn on all screens<br>
+**setup** - used to initialize all variable and asign values<br>
+**drawStart** - What should be drawn on start screen<br>
+**drawPlaying** - everything that should be drawn while playing<br>
+**drawEnd** - drawing the end screen<br>
 <br>
 These methods don't have to in UserGame because they are already in Control class as default cases<br>
 Only rewrite the drawStart and drawEnd methods if you want a custom start or end screen<br>
@@ -77,12 +77,12 @@ Very useful for getting simple things done that would be annoying to insert inli
 <br>
 #####Includes:<br>
 <br>
-CenteredText - Centers text on screen at specified Y or in the center of a specified rectangle<br>
-CheckPort - Checks if a port is open at given host and port number<br>
-CustomFont - Creates a font from a file path given and has methods to get variations of the font<br>
-FileList - Easily get and set file contents as a list<br>
-Panel - basic JPanel template<br>
-ScanNetwork - Scans all Ips of a network for a specified port and returns witch ips are open<br>
-ScoreInfo - Used to read and write to 2 score files for a game, one for person name and score, also creates the files if not there<br>
-Window - Classes use this for all variable reference, so to customize, use Window or not use it and get errors to know where to change<br>
+**CenteredText** - Centers text on screen at specified Y or in the center of a specified rectangle<br>
+**CheckPort** - Checks if a port is open at given host and port number<br>
+**CustomFont** - Creates a font from a file path given and has methods to get variations of the font<br>
+**FileList** - Easily get and set file contents as a list<br>
+**Panel** - basic JPanel template<br>
+**ScanNetwork** - Scans all Ips of a network for a specified port and returns witch ips are open<br>
+**ScoreInfo** - Used to read and write to 2 score files for a game, one for person name and score, also creates the files if not there<br>
+**Window** - Classes use this for all variable reference, so to customize, use Window or not use it and get errors to know where to change<br>
 
