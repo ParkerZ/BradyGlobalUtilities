@@ -17,6 +17,8 @@ public class UserGame extends Control implements PlayerInterface {
 	 * 
 	 * boolean startGame boolean playing boolean endGame boolean nameEnter
 	 * boolean highScores
+	 * 
+	 * boolean singleDirection sets if only one directin per frame
 	 */
 
 	/*
