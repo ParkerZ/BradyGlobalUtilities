@@ -100,7 +100,7 @@ public class UserGame extends Control implements PlayerInterface {
 
 	}
 /**
- * Sets up the game before it starts. Sets all variables needed to any certain values
+ 	* Sets up the game before it starts. Sets all variables needed to any certain values
  */
 	@Override
 	public void setup() {
