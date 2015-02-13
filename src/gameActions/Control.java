@@ -2,6 +2,7 @@ package gameActions;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -87,6 +88,63 @@ public class Control extends JPanel implements Screen {
 
 		up, down, left, right;
 	}
+	
+	/**
+	 * The positions that scores could be on screen to make it easier to position the score
+	 * @author Brady Stoffel
+	 *
+	 */
+	public enum ScoreCoords {
+		
+		top_left (10, 10), 
+		top_middle (Window.WIDTH / 2, 10), 
+		top_right (Window.WIDTH - 10, 10), 
+		middle_left (10, Window.HEIGHT / 2), 
+		middle_middle (Window.WIDTH / 2, Window.HEIGHT / 2), 
+		middle_right (Window.WIDTH - 10, Window.HEIGHT / 2), 
+		bottom_left (10, Window.HEIGHT - 50), 
+		bottom_middle (Window.WIDTH / 2, Window.HEIGHT - 50), 
+		bottom_right (Window.WIDTH - 10, Window.HEIGHT - 50);
+		
+		public int x;
+		public int y;
+		
+		private ScoreCoords(int x, int y) {
+			
+			this.x = x;
+			this.y = y;
+		}
+		
+		public Point getCoords() {
+			return new Point(this.x, this.y);
+			
+		}
+		
+		/**
+		 * Draws text at preset enum position using current font
+		 * @param text
+		 * @param g
+		 */
+		public void draw(String text, Graphics g) {
+			
+			
+			FontMetrics fontInfo = g.getFontMetrics();
+			int textWidth = fontInfo.stringWidth(text);
+			int textHeight = fontInfo.getHeight();
+			
+			if (x == Window.WIDTH / 2) {
+				
+				CenteredText.draw(text, y, g);
+			} else if (x == 10) {
+				
+				g.drawString(text, x, y + textHeight / 2);
+			} else if (x == Window.WIDTH - 10) {
+				
+				g.drawString(text, x - textWidth, y + textHeight / 2);
+			}
+			
+		}
+	}
 
 	/**
 	 * keyMap - modify this to change key locations Gets modified when on the
@@ -124,6 +182,10 @@ public class Control extends JPanel implements Screen {
 	public Timer timer;
 	public int origSpeed = movementVar;
 	public double speed = origSpeed;
+	/**
+	 * If you want to game to speed up as the score gets higher
+	 */
+	public boolean speedUp = false;
 
 	public int score;
 	public Character letter;
@@ -196,7 +258,7 @@ public class Control extends JPanel implements Screen {
 				Point screen = this.getLocationOnScreen();
 
 				g.drawString("" + (mouse.x - screen.x) + "  "
-						+ (mouse.y - screen.y), 20, 20);
+						+ (mouse.y - screen.y), 20, 80);
 
 			}
 			if (paused) {
@@ -391,6 +453,7 @@ public class Control extends JPanel implements Screen {
 
 			} else if (endGame) {
 
+				speed = origSpeed;
 				sub.reset();
 				stopTime();
 				startGame = false;
@@ -489,6 +552,8 @@ public class Control extends JPanel implements Screen {
 
 			sub.moves();
 
+			if (speedUp) timer.setDelay(1000 / (int) ( speed + score / 2));
+			
 			if (sub.checkIfDead()) {
 
 				playing = false;
