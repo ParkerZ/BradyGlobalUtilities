@@ -4,7 +4,7 @@ import gameFolder.GameInfo;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -151,7 +151,7 @@ public class ScoreInfo {
 		return results;
 	}
 
-	public static void drawScores(Graphics g, String gameName) {
+	public static void drawScores(Graphics2D g, String gameName) {
 
 		ArrayList<String[]> results = getScores(gameName);
 		g.setFont(new Font("Joystix", Font.BOLD, 17));
@@ -189,7 +189,7 @@ public class ScoreInfo {
 		}
 	}
 
-	public static void enterName(Graphics g, int score, String pName) {
+	public static void enterName(Graphics2D g, int score, String pName) {
 
 		int wSW = Window.WIDTH;
 		int wSH = Window.HEIGHT;

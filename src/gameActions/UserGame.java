@@ -2,11 +2,11 @@ package gameActions;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.Timer;
 
-import utilityClasses.CenteredText;
+import utilityClasses.*;
 
 public class UserGame extends Control implements PlayerInterface {
 
@@ -24,10 +24,10 @@ public class UserGame extends Control implements PlayerInterface {
 	/*
 	 * You can override these methods to customize actions
 	 * 
-	 * drawStart(Graphics g)
-	 * drawPlaying(Graphics g)
-	 * drawPaused(Graphics g)
-	 * drawEnd(Graphics g)
+	 * drawStart(Graphics2D g)
+	 * drawPlaying(Graphics2D g)
+	 * drawPaused(Graphics2D g)
+	 * drawEnd(Graphics2D g)
 	 * up()
 	 * down()
 	 * left()
@@ -54,15 +54,15 @@ public class UserGame extends Control implements PlayerInterface {
 	 * that it only drawn when that is true
 	 * 
 	 */
-	public void draw(Graphics g) {
+	public void draw(Graphics2D g) {
 
 	}
 	/**
 	 * Overrides the drawPlaying method in the Control class. So if you want something different than a
 	 * box that you can change the size of, change what is in here. Gets called when the screen in repainted
 	 */
-	@Override
-	public void drawPlaying(Graphics g) {
+
+	public void drawPlaying(Graphics2D g) {
 		
 		g.setColor(Color.CYAN);
 		g.fillRect(20, 30, playerX, playerY);
