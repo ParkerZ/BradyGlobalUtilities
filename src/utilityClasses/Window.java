@@ -9,6 +9,7 @@ package utilityClasses;
  */
 public class Window {
 
+	public static final int TOP_BUFFER = 22;
 	/**
 	 * Window width size
 	 */
@@ -16,8 +17,8 @@ public class Window {
 	/**
 	 * Window height size
 	 */
-	public static final int HEIGHT = 500;
-	
+	public static final int HEIGHT = 499;
+	public static final int REAL_HEIGHT = HEIGHT + TOP_BUFFER;
 	public static final boolean ALWAYS_ON_TOP = false;
 	public static final boolean RESIZEABLE = true;
 	

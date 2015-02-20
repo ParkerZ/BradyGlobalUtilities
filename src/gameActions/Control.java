@@ -82,7 +82,7 @@ public class Control extends JPanel implements Screen {
 	public boolean rightPressed = false;
 	
 	public int width = Window.WIDTH;
-	public int height = Window.HEIGHT + 20;
+	public int height = Window.HEIGHT;
 
 	public static String fontFile = GameInfo.FONT_FILE;
 	public static CustomFont customFont = new CustomFont(fontFile, Font.BOLD, 18);
@@ -108,9 +108,9 @@ public class Control extends JPanel implements Screen {
 		middle_left (10, Window.HEIGHT / 2), 
 		middle_middle (Window.WIDTH / 2, Window.HEIGHT / 2), 
 		middle_right (Window.WIDTH - 10, Window.HEIGHT / 2), 
-		bottom_left (10, Window.HEIGHT), 
-		bottom_middle (Window.WIDTH / 2, Window.HEIGHT), 
-		bottom_right (Window.WIDTH - 10, Window.HEIGHT);
+		bottom_left (10, Window.HEIGHT - 15), 
+		bottom_middle (Window.WIDTH / 2, Window.HEIGHT - Window.TOP_BUFFER), 
+		bottom_right (Window.WIDTH - 10, Window.HEIGHT - Window.TOP_BUFFER);
 		
 		public int x;
 		public int y;
@@ -242,7 +242,7 @@ public class Control extends JPanel implements Screen {
 		super.paintComponent(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
-		g2.scale((double) width / (double) Window.WIDTH, (double) (height - 20) / (double) Window.HEIGHT);
+		g2.scale((double) width / (double) Window.WIDTH, (double) (height) / (double) Window.HEIGHT);
 		
 		sub.draw(g2);
 
@@ -514,6 +514,7 @@ public class Control extends JPanel implements Screen {
 
 		width = getWidth();
 		height = getHeight();
+		System.out.println("width: " + width + "\t height: " + height);
 		
 		sub.alwaysExecute();
 		
