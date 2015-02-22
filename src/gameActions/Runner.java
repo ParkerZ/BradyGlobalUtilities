@@ -1,26 +1,26 @@
 package gameActions;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 
 import javax.swing.JFrame;
 
 import utilityClasses.Window;
-import gameFolder.GameInfo;
 
 public class Runner {
 
 	public static void main(String[] args) {
 		
-		run();
+//		run(new UserGame());
 		
 	}
 	/**
 	 * Runs the game. Makes a new JFrame and adds the UserGame to the frame
 	 */
-	public static void run() {
+	public static void run(Control game) {
 		
-		
-		JFrame frame = new JFrame(GameInfo.NAME + "!");
+		Class gameClass = game.getClass();
+		JFrame frame = new JFrame(game.NAME + "!");
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
@@ -31,7 +31,8 @@ public class Runner {
 		
 //		frame.setAlwaysOnTop(true);
 
-		UserGame game = new UserGame();
+//		UserGame game = new UserGame();
+//		frame.add((Component) gameClass.cast(game), BorderLayout.CENTER);
 		frame.add(game, BorderLayout.CENTER);
 
 		frame.setSize(Window.WIDTH, Window.HEIGHT);
@@ -42,7 +43,11 @@ public class Runner {
 	public Runner() {
 		// TODO Auto-generated constructor stub
 	
-	run();
+	}
+	
+	public Runner(Control game) {
+		
+		run(game);
 	}
 
 }

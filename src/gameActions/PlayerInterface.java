@@ -8,16 +8,23 @@ import java.awt.Graphics2D;
  * @author Brady
  *
  */
-public interface PlayerInterface {
+public abstract class PlayerInterface extends Control {
 
-	public void moves();
-	public boolean checkIfDead();
-	public void reset();
-	public void draw(Graphics2D g);
-	public void setup();
+	public PlayerInterface() {
+		super();
+		NAME = getGameName();
+		TXT_FILE = NAME.toLowerCase().replaceAll("\\s", "");
+		FOLDER_PATH = getFolderPath();
+		FONT_FILE = getFontFile();
+	}
+	public abstract void moves();
+	public abstract boolean checkIfDead();
+	public abstract void reset();
+	public abstract void draw(Graphics2D g);
+	public abstract void setup();
 	
-	public void drawStart(Graphics2D g);
-	public void drawPlaying(Graphics2D g);
-	public void drawEnd(Graphics2D g);
+	public abstract String getGameName();
+//	public abstract String getFolderPath();
+//	public abstract String getFontFile();
 	
 }
