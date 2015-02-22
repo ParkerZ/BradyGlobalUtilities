@@ -8,7 +8,7 @@ import javax.swing.Timer;
 
 import utilityClasses.*;
 
-public class UserGame extends Control implements PlayerInterface {
+public class UserGame extends PlayerInterface {
 
 	/*
 	 * int deltaX int deltaY int movementVar
@@ -54,7 +54,6 @@ public class UserGame extends Control implements PlayerInterface {
 	 * that it only drawn when that is true
 	 * 
 	 */
-	@Override
 	public void draw(Graphics2D g) {
 
 	}
@@ -62,7 +61,7 @@ public class UserGame extends Control implements PlayerInterface {
 	 * Overrides the drawPlaying method in the Control class. So if you want something different than a
 	 * box that you can change the size of, change what is in here. Gets called when the screen in repainted
 	 */
-	@Override
+
 	public void drawPlaying(Graphics2D g) {
 		
 		g.setColor(Color.CYAN);
@@ -76,7 +75,6 @@ public class UserGame extends Control implements PlayerInterface {
 	 * Gets called constantly. Put code here that will modify the player or other variables
 	 * 
 	 */
-	@Override
 	public void moves() {
 
 		playerX += deltaX;
@@ -88,7 +86,6 @@ public class UserGame extends Control implements PlayerInterface {
 	/**
 	 * This should return a boolean indicating if the player is dead or not. By default returns false
 	 */
-	@Override
 	public boolean checkIfDead() {
 		
 		
@@ -99,7 +96,6 @@ public class UserGame extends Control implements PlayerInterface {
 	 * Gets called when the game is reset and you start over. Also calls the setup method. Can be used
 	 * so make sure everything is cleared so the game starts new
 	 */
-	@Override
 	public void reset() {
 
 		setup();
@@ -117,5 +113,21 @@ public class UserGame extends Control implements PlayerInterface {
 		playerY = 100;
 
 	}
+
+@Override
+public String getGameName() {
+	// TODO Auto-generated method stub
+	return "Game";
+}
+
+@Override
+public int getScore() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+
+
+
 
 }

@@ -1,22 +1,21 @@
 package utilityClasses;
 
-import gameFolder.GameInfo;
-
 import java.awt.FontMetrics;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 /*
  *  this seems like an odd way to go about this.
- *  I'd expect something more like GuiUtil.centerText(String text, Graphics2D g).
+ *  I'd expect something more like GuiUtil.centerText(String text, Graphics g).
  *  Or just use a JLabel and set its horizontal alignment.
  */
 public class CenteredText {
 
-	public static void draw(String text, int yVal, Graphics2D g) {
+	public static void draw(String text, int yVal, Graphics g) {
 
-		int width = Window.WIDTH;
-		int height = Window.HEIGHT;
+		int width = 500;
+		int height = 500;
 		
 		FontMetrics fontInfo = g.getFontMetrics();
 		int textWidth = fontInfo.stringWidth(text);
@@ -29,7 +28,7 @@ public class CenteredText {
 
 	}
 	
-	public static void draw(String text, Rectangle r, Graphics2D g) {
+	public static void draw(String text, Rectangle r, Graphics g) {
 
 		FontMetrics fontInfo = g.getFontMetrics();
 		int textWidth = fontInfo.stringWidth(text);
@@ -42,12 +41,29 @@ public class CenteredText {
 
 	}
 	
-	public static void draw(String text, int yVal, Graphics2D g, int fontSize) {
+	public static void draw(String text, int w, int h, Graphics g, boolean t, int yVal) {
+		
+		int width = w;
+		int height = h;
+		
+		FontMetrics fontInfo = g.getFontMetrics();
+		int textWidth = fontInfo.stringWidth(text);
+		int textHeight = fontInfo.getHeight();
+
+		int x = (width - textWidth) / 2;
+		int y = (height - textHeight) / 2;
+		
+		g.drawString(text, x, yVal);
+		
+		
+	}
+	
+	public static void draw(String text, int yVal, Graphics2D g, int fontSize, String fontFile) {
 
 		int width = Window.WIDTH;
 		int height = Window.HEIGHT;
 		
-		g.setFont(CustomFont.makeCustomFont(GameInfo.FONT_FILE, fontSize));
+		g.setFont(CustomFont.makeCustomFont(fontFile, fontSize));
 		
 		FontMetrics fontInfo = g.getFontMetrics();
 		int textWidth = fontInfo.stringWidth(text);
@@ -60,9 +76,9 @@ public class CenteredText {
 
 	}
 	
-	public static void draw(String text, Rectangle r, Graphics2D g, int fontSize) {
+	public static void draw(String text, Rectangle r, Graphics2D g, int fontSize, String fontFile) {
 
-		g.setFont(CustomFont.makeCustomFont(GameInfo.FONT_FILE, fontSize));
+		g.setFont(CustomFont.makeCustomFont(fontFile, fontSize));
 		
 		FontMetrics fontInfo = g.getFontMetrics();
 		int textWidth = fontInfo.stringWidth(text);
@@ -74,6 +90,8 @@ public class CenteredText {
 		g.drawString(text, x, y);
 
 	}
+	
+	
 	
 	
 
