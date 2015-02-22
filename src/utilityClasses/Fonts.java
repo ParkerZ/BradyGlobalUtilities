@@ -12,7 +12,7 @@ public class Fonts extends JComponent {
         .getAvailableFontFamilyNames();
     font = new Font[differentFonts.length];
   }
-  public void paintComponent(Graphics g) {
+  public void paintComponent(Graphics2D g) {
     for (int j = 0; j < differentFonts.length; j += 1) {
       if (font[j] == null) {
         font[j] = new Font(differentFonts[j], Font.PLAIN, 8);

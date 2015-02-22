@@ -2,11 +2,11 @@ package gameActions;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.Timer;
 
-import utilityClasses.CenteredText;
+import utilityClasses.*;
 
 public class UserGame extends Control implements PlayerInterface {
 
@@ -17,15 +17,17 @@ public class UserGame extends Control implements PlayerInterface {
 	 * 
 	 * boolean startGame boolean playing boolean endGame boolean nameEnter
 	 * boolean highScores
+	 * 
+	 * boolean singleDirection sets if only one directin per frame
 	 */
 
 	/*
 	 * You can override these methods to customize actions
 	 * 
-	 * drawStart(Graphics g)
-	 * drawPlaying(Graphics g)
-	 * drawPaused(Graphics g)
-	 * drawEnd(Graphics g)
+	 * drawStart(Graphics2D g)
+	 * drawPlaying(Graphics2D g)
+	 * drawPaused(Graphics2D g)
+	 * drawEnd(Graphics2D g)
 	 * up()
 	 * down()
 	 * left()
@@ -52,7 +54,8 @@ public class UserGame extends Control implements PlayerInterface {
 	 * that it only drawn when that is true
 	 * 
 	 */
-	public void draw(Graphics g) {
+	@Override
+	public void draw(Graphics2D g) {
 
 	}
 	/**
@@ -60,7 +63,7 @@ public class UserGame extends Control implements PlayerInterface {
 	 * box that you can change the size of, change what is in here. Gets called when the screen in repainted
 	 */
 	@Override
-	public void drawPlaying(Graphics g) {
+	public void drawPlaying(Graphics2D g) {
 		
 		g.setColor(Color.CYAN);
 		g.fillRect(20, 30, playerX, playerY);
@@ -73,17 +76,19 @@ public class UserGame extends Control implements PlayerInterface {
 	 * Gets called constantly. Put code here that will modify the player or other variables
 	 * 
 	 */
+	@Override
 	public void moves() {
 
 		playerX += deltaX;
 		playerY += deltaY;
 
-		super.repaint();
+		
 
 	}
 	/**
 	 * This should return a boolean indicating if the player is dead or not. By default returns false
 	 */
+	@Override
 	public boolean checkIfDead() {
 		
 		
@@ -94,13 +99,14 @@ public class UserGame extends Control implements PlayerInterface {
 	 * Gets called when the game is reset and you start over. Also calls the setup method. Can be used
 	 * so make sure everything is cleared so the game starts new
 	 */
+	@Override
 	public void reset() {
 
 		setup();
 
 	}
 /**
- * Sets up the game before it starts. Sets all variables needed to any certain values
+ 	* Sets up the game before it starts. Sets all variables needed to any certain values
  */
 	@Override
 	public void setup() {

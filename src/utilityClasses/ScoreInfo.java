@@ -1,8 +1,10 @@
 package utilityClasses;
 
+import gameFolder.GameInfo;
+
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -149,7 +151,7 @@ public class ScoreInfo {
 		return results;
 	}
 
-	public static void drawScores(Graphics g, String gameName) {
+	public static void drawScores(Graphics2D g, String gameName) {
 
 		ArrayList<String[]> results = getScores(gameName);
 		g.setFont(new Font("Joystix", Font.BOLD, 17));
@@ -175,7 +177,7 @@ public class ScoreInfo {
 			}
 			dots = dots.concat(".");
 
-			// CenteredText lx = new CenteredText(c.toString(), 45, 8, g);
+			// CenteredText.draw(c.toString(), 45, 8, g);
 			// System.out.println(pIndex);
 			// Color col = (pIndex == r - 1) ? Color.YELLOW : Color.WHITE;
 			// g.setColor(col);
@@ -187,7 +189,7 @@ public class ScoreInfo {
 		}
 	}
 
-	public static void enterName(Graphics g, int score, String pName) {
+	public static void enterName(Graphics2D g, int score, String pName) {
 
 		int wSW = Window.WIDTH;
 		int wSH = Window.HEIGHT;
@@ -211,14 +213,14 @@ public class ScoreInfo {
 	public static File getScoreFile(String gameName) {
 		
 //		return new File("Library/Application Support/Stoffel/Games/Infofiles/" + gameName.concat("Scores.txt"));
-		return new File("Infofiles/" + gameName.concat("Scores.txt"));
+		return new File(GameInfo.FOLDER_PATH + gameName.concat("Scores.txt"));
 		
 	}
 	
 public static File getPeopleFile(String gameName) {
 		
 //		return new File("Library/Application Support/Stoffel/Games/Infofiles/" + gameName.concat("People.txt"));
-		return new File("Infofiles/" + gameName.concat("People.txt"));
+		return new File(GameInfo.FOLDER_PATH + gameName.concat("People.txt"));
 		
 	}
 }

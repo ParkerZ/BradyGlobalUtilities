@@ -9,6 +9,7 @@ package utilityClasses;
  */
 public class Window {
 
+	public static final int TOP_BUFFER = 22;
 	/**
 	 * Window width size
 	 */
@@ -16,10 +17,10 @@ public class Window {
 	/**
 	 * Window height size
 	 */
-	public static final int HEIGHT = 500;
-	
+	public static final int HEIGHT = 499;
+	public static final int REAL_HEIGHT = HEIGHT + TOP_BUFFER;
 	public static final boolean ALWAYS_ON_TOP = false;
-	public static final boolean RESIZEABLE = false;
+	public static final boolean RESIZEABLE = true;
 	
 	
 	public static final String FONT_NAME = "Joystix";
@@ -27,6 +28,7 @@ public class Window {
 	public static final int ENTER_TO_START_SIZE = 26;
 	
 	public static final int PAUSE_SIZE = 60;
+	public static final int SCORE_SIZE = 40;
 	
 	public static final int YOU_WIN_SIZE = 60;
 	public static final int SCORE_LIST_SIZE = 17;
