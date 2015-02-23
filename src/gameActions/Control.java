@@ -9,6 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -82,6 +83,11 @@ public class Control extends JPanel implements Screen {
 	
 	public int width = Window.WIDTH;
 	public int height = Window.HEIGHT;
+	
+	/**
+	 * Outside box of window
+	 */
+	public Rectangle outerbox = new Rectangle(0, 0, width - 1, height);
 	
 	public static String NAME = "Game Name";
 	public static String TXT_FILE = NAME.toLowerCase().replaceAll("\\s", "");
@@ -188,7 +194,7 @@ public class Control extends JPanel implements Screen {
 	public int playerY;
 
 	public Timer timer;
-	public int origSpeed = movementVar;
+	public int origSpeed = 60;
 	public double speed = origSpeed;
 	/**
 	 * If you want to game to speed up as the score gets higher
@@ -421,6 +427,7 @@ public class Control extends JPanel implements Screen {
 			keyIndex++;
 			if (keyIndex > 3)
 				keyIndex = 0;
+			
 
 		} else if (e.getKeyCode() == upKey) {
 
@@ -460,8 +467,9 @@ public class Control extends JPanel implements Screen {
 
 				playing = true;
 				startGame = false;
+				
 				setKeys();
-				startTime();
+				resetTime();
 				setup();
 
 			} else if (endGame) {
@@ -493,9 +501,15 @@ public class Control extends JPanel implements Screen {
 
 		} else if (e.getKeyCode() == KeyEvent.VK_SPACE && (playing || paused)) {
 
+			if (playing) {
+				stopTime();
+			} else {
+				startTime();
+			}
+			
 			playing = !playing;
 			paused = !paused;
-
+			
 			repaint();
 
 		} else if (e.getKeyLocation() == KeyEvent.KEY_LOCATION_STANDARD
