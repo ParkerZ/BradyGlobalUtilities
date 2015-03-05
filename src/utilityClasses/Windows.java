@@ -7,17 +7,17 @@ package utilityClasses;
  * @author Brady
  *
  */
-public class Window {
+public class Windows {
 
 	public static final int TOP_BUFFER = 22;
 	/**
-	 * Window width size
+	 * Windows width size
 	 */
-	public static final int WIDTH = 500;
+	public static final int WIDTH = 800;
 	/**
-	 * Window height size
+	 * Windows height size
 	 */
-	public static final int HEIGHT = 500;
+	public static final int HEIGHT = 480;
 	public static final int REAL_HEIGHT = HEIGHT + TOP_BUFFER;
 	public static final boolean ALWAYS_ON_TOP = false;
 	public static final boolean RESIZEABLE = true;
@@ -57,7 +57,7 @@ public class Window {
 //	public static final String TXT_FILE = NAME.toLowerCase().replaceAll("\\s", "");
 //	public static final String FONT_FILE = "joystix";
 //	
- 	public Window() {
+ 	public Windows() {
 		// TODO Auto-generated constructor stub
 	}
 

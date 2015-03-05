@@ -369,7 +369,7 @@ public void drawScores(Graphics g) {
 
 			ArrayList<String[]> results = new ArrayList<String[]>();
 
-			for (int i = 0; i < people.size(); i++) {
+			for (int i = 0; i < people.size() - 1; i++) {
 				String[] hs = { scores.get(i).toString(), people.get(i) };
 				results.add(hs);
 			}
@@ -391,7 +391,7 @@ public void drawScores(Graphics g) {
 			ArrayList<String> people) {
 
 		ArrayList<String[]> results = new ArrayList<String[]>();
-		for (int i = 0; i < people.size(); i++) {
+		for (int i = 0; i < people.size() - 1; i++) {
 
 			String[] sp = { scores.get(i).toString(), people.get(i) };
 			results.add(sp);
@@ -454,8 +454,8 @@ public void drawScores(Graphics g) {
 
 	public static void enterName(Graphics2D g, int score, String pName) {
 
-		int wSW = Window.WIDTH;
-		int wSH = Window.HEIGHT;
+		int wSW = Windows.WIDTH;
+		int wSH = Windows.HEIGHT;
 		g.setFont(new Font("Joystix", Font.BOLD, 40));
 		CenteredText.draw("Enter", 100, g);
 		CenteredText.draw("Your Name", 170, g);
