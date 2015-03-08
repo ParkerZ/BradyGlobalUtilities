@@ -1,5 +1,6 @@
 package gameActions;
 
+import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Font;
@@ -372,6 +373,42 @@ public class Control extends JPanel implements Screen {
 		g.setFont(new Font(Windows.FONT_NAME, Font.BOLD, Windows.RESTART_SIZE));
 
 		CenteredText.draw("Enter to Restart", Windows.RESTART_Y, g);
+	}
+	
+	public void drawBorder(Graphics2D g) {
+
+		g.setColor(Color.WHITE);
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setStroke(new BasicStroke(15));
+		g2.drawRect(outerbox.x, outerbox.y, outerbox.width, outerbox.height);
+		g2.setStroke(new BasicStroke(2));
+	}
+	
+	public void drawBorder(Graphics2D g, Color c) {
+
+		g.setColor(c);
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setStroke(new BasicStroke(15));
+		g2.drawRect(outerbox.x, outerbox.y, outerbox.width, outerbox.height);
+		g2.setStroke(new BasicStroke(2));
+	}
+	
+	public void drawBorder(Graphics2D g, int width) {
+
+		g.setColor(Color.WHITE);
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setStroke(new BasicStroke(width));
+		g2.drawRect(outerbox.x, outerbox.y, outerbox.width, outerbox.height);
+		g2.setStroke(new BasicStroke(2));
+	}
+	
+	public void drawBorder(Graphics2D g, Color c, int width) {
+
+		g.setColor(c);
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setStroke(new BasicStroke(width));
+		g2.drawRect(outerbox.x, outerbox.y, outerbox.width, outerbox.height);
+		g2.setStroke(new BasicStroke(2));
 	}
 	
 	public void setup() {
