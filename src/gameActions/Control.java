@@ -316,7 +316,7 @@ public class Control extends JPanel implements Screen {
 	 */
 	public void drawStart(Graphics2D g) {
 
-		g.setColor(Color.WHITE);
+//		g.setColor(Color.WHITE);
 		g.setFont(new Font(Windows.FONT_NAME, Font.BOLD, Windows.TITLE_SIZE));
 		CenteredText.draw(NAME, Windows.TITLE_Y, g);
 		g.setFont(new Font(Windows.FONT_NAME, Font.BOLD,
