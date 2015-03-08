@@ -15,7 +15,7 @@ public class Runner extends JFrame {
 	
 	public static void main(String[] args) {
 		
-		Runner r = new Runner();
+		Runner r = new Runner(new UserGame());
 		Runner.enterFullScreen(r);
 		
 	}

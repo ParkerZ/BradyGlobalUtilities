@@ -55,7 +55,7 @@ public class UserGame extends Game {
 	 * 
 	 */
 	public void draw(Graphics2D g) {
-
+		
 	}
 	/**
 	 * Overrides the drawPlaying method in the Control class. So if you want something different than a
