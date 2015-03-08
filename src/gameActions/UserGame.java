@@ -76,7 +76,23 @@ public class UserGame extends Game {
 	 * 
 	 */
 	public void moves() {
-
+		
+		if (upPressed) {
+			deltaY = -movementVar;
+		} else if (downPressed) {
+			deltaY = movementVar;
+		} else {
+			deltaY = 0;
+		}
+		
+		if (leftPressed) {
+			deltaY = -movementVar;
+		} else if (downPressed) {
+			deltaY = movementVar;
+		} else {
+			deltaY = 0;
+		}
+		
 		playerX += deltaX;
 		playerY += deltaY;
 
@@ -125,9 +141,5 @@ public int getScore() {
 	// TODO Auto-generated method stub
 	return 0;
 }
-
-
-
-
 
 }
