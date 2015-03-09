@@ -86,11 +86,11 @@ public class UserGame extends Game {
 		}
 		
 		if (leftPressed) {
-			deltaY = -movementVar;
+			deltaX = -movementVar;
 		} else if (rightPressed) {
-			deltaY = movementVar;
+			deltaX = movementVar;
 		} else {
-			deltaY = 0;
+			deltaX = 0;
 		}
 		
 		playerX += deltaX;
