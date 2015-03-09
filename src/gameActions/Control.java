@@ -443,8 +443,9 @@ public class Control extends JPanel implements Screen {
 	 * @return int
 	 */
 	public int getTime() {
-
-		return (int) ((totalTime + System.currentTimeMillis() - startTime) / 1000);
+		
+		if (!paused) stopTime();
+		return (int) (totalTime / 1000);
 	}
 
 	/**
