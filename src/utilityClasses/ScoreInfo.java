@@ -283,6 +283,11 @@ public void drawScores(Graphics g) {
 	
 	public static void setScores(int score, String person, String gameName, String folderPath) {
 
+		System.out.println(score);
+		System.out.println(person);
+		System.out.println(gameName);
+		System.out.println(folderPath);
+		
 		File gameScores = getScoreFile(gameName, folderPath);
 		File gamePeople = getPeopleFile(gameName, folderPath);
 		
@@ -339,8 +344,11 @@ public void drawScores(Graphics g) {
 			peopleContents.close();
 
 		} catch (IOException e) {
-
-		}
+			e.printStackTrace();
+			}
+		
+			
+		
 
 	}
 

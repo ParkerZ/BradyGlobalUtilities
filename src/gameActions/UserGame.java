@@ -105,7 +105,7 @@ public class UserGame extends Game {
 	public boolean checkIfDead() {
 		
 		
-		return false;
+		return playerX > 500;
 	}
 	
 	/**

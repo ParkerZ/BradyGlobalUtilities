@@ -154,4 +154,24 @@ public class FileList {
 		return list;
 	}
 
+	public static void verifyFile(String gameName, String folderPath) {
+
+		File gameScores = new File(folderPath + gameName.concat("Scores.txt"));
+		File gamePeople = new File(folderPath + gameName.concat("People.txt"));
+
+		try {
+			if (!gameScores.exists()) {
+				gameScores.getParentFile().mkdirs();
+				gameScores.createNewFile();
+			}
+			if (!gamePeople.exists()) {
+				gamePeople.getParentFile().mkdirs();
+				gamePeople.createNewFile();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }

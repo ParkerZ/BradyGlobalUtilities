@@ -618,6 +618,7 @@ public class Control extends JPanel implements Screen {
 			if (checkIfDead()) {
 
 				playing = false;
+				paused = false;
 				nameEnter = true;
 			}
 		}
