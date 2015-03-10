@@ -1,0 +1,49 @@
+package CustomRectangle;
+
+import java.awt.Rectangle;
+import java.util.Random;
+
+public class CRectangle extends Rectangle {
+
+	public double deltaX = 0;
+	public double deltaY = 0;
+	private Random r = new Random();
+	
+	public CRectangle(int i, int j, int k, int l) {
+		// TODO Auto-generated constructor stub
+	super(i, j, k, l);
+	}
+	
+	public CRectangle(int i, int j, int k, int l, boolean moving) {
+		// TODO Auto-generated constructor stub
+	super(i, j, k, l);
+	setRandomDirection();
+	}
+	
+	public CRectangle(int i, int j, int k, int l, int dx, int dy) {
+		// TODO Auto-generated constructor stub
+	super(i, j, k, l);
+	deltaX = dx;
+	deltaY = dy;
+	}
+	public CRectangle() {
+		
+		super();
+	}
+
+	public void setDirection(double delta, double delta1) {
+		
+		deltaX = delta;
+		deltaY = delta1;
+		
+	}
+	
+	public void setRandomDirection() {
+		
+		deltaX = (r.nextBoolean()) ? -5 : 5 ;
+		deltaY = (r.nextBoolean()) ? -5 : 5 ;
+		
+	}
+	
+	
+}
